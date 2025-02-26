@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2
 {
-    public partial class Form1: Form
+    public partial class Form1 : Form
     {
         public Form1()
         {
@@ -125,8 +125,12 @@ namespace WindowsFormsApp2
                 DateTime start = DateTime.Parse(startDate.Text).AddDays(-1);
                 DateTime end = DateTime.Parse(EndDate.Text).AddDays(1);
 
-                Task.Run(() => { gridView1.GridControl.DataSource = SqlSugarHelper.Db.Queryable<OrderDetails>().Where(s => s.Date > start && s.Date < end).ToList(); });
-                
+                Task.Run(async () =>
+                {
+                    gridView1.GridControl.DataSource = await SqlSugarHelper.Db.Queryable<OrderDetails>().Where(s => s.Date > start && s.Date < end).ToArrayAsync();
+                    //gridView1.RefreshData();
+                });
+
             }
         }
 
