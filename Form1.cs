@@ -127,7 +127,7 @@ namespace WindowsFormsApp2
 
                 Task.Run(async () =>
                 {
-                    gridView1.GridControl.DataSource = await SqlSugarHelper.Db.Queryable<OrderDetails>().Where(s => s.Date > start && s.Date < end).ToArrayAsync();
+                    gridView1.GridControl.DataSource = await SqlSugarHelper.Db.Queryable<OrderDetails>().Where(s => s.Date > start && s.Date < end).ToListAsync();
                     //gridView1.RefreshData();
                 });
 
