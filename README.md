@@ -1,1 +1,3 @@
-# WindowsFormsApp2
+devExpress中GridView表格demo
+
+在您的数据库中创建Orders表,配置好链接字符即可；
